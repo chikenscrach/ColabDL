@@ -7,13 +7,15 @@
 
 下載完後上傳到自己的Google drive，或是其他的免空。
 
-| 網站名稱 | 檔案大小限制 | 檔案存活時間 | 其它 |
-|---|---|---|---|
-| [gigafile](https://gigafile.nu/) | 300 GB | 可到100天 |  |
-| [pixeldrain](https://pixeldrain.com/) | 20 GB | 120天 |  |
-| [mega](https://mega.nz/) | 20 GB | 基本永久 | 需註冊 |
-| [catbox](https://catbox.moe/) | 200 MB | 永久 |  |
-| [Buzzheavier](https://buzzheavier.com/) | 無限制 | 永久 | 可自動生成torrent檔 |
-| [bzzhr](https://bzzhr.co/) | 無限制 | 永久 |  |
-| [Gofile](https://gofile.io/) | 無限制 | 10天 |  |
-| [Qiwi](https://qiwi.gg/) | 無限制 | 約1個月 |  |
+| 推薦 | 網站名稱 | 檔案大小限制 | 檔案存活時間 | 其它 | 推薦原因 |
+|---|---|---|---|---|---|
+| | [gigafile](https://gigafile.nu/) | 300 GB | 可到100天 | | |
+| | [pixeldrain](https://pixeldrain.com/) | 20 GB | 120天 | | |
+| | [mega](https://mega.nz/) | 20 GB | 基本永久 | 需註冊 | |
+| | [Send.cm](https://send.cm/) | 100 GB | 15 天 | | |
+| | [catbox](https://catbox.moe/) | 200 MB | 永久 | | |
+| ★ | [Buzzheavier](https://buzzheavier.com/) | 無限制 | 永久 | 可自動生成torrent檔 | 無檔案限制與存活時間 |
+| ★ | [HIDAN](https://hidan.sh/) | 無限制 | 10天 | | 上傳速度快 |
+| | [file.haus](https://filehaus.top/) | 200 GB | 永久 | | |
+| | [Gofile](https://gofile.io/) | 無限制 | 10天 | | |
+| ★ | [Qiwi](https://qiwi.gg/) | 無限制 | 約1個月 | 需註冊 | 上傳速度快 |
