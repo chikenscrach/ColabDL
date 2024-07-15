@@ -10,7 +10,7 @@
 | 推薦 | 網站名稱 | 檔案大小限制 | 檔案存活時間 | 其它 | 推薦原因 |
 |---|---|---|---|---|---|
 | | [gigafile](https://gigafile.nu/) | 300 GB | 可到100天 | | |
-| | [pixeldrain](https://pixeldrain.com/) | 20 GB | 120天 | | |
+| | [pixeldrain](https://pixeldrain.com/) | 20 GB | 120天 | 需註冊 | |
 | | [mega](https://mega.nz/) | 20 GB | 基本永久 | 需註冊 | |
 | | [Send.cm](https://send.cm/) | 100 GB | 15 天 | | |
 | | [catbox](https://catbox.moe/) | 200 MB | 永久 | | |
