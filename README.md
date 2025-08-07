@@ -8,7 +8,7 @@
 下載完後上傳到自己的Google drive，或是其他的免空。
 
 | 網站名稱 | 檔案大小限制 | 檔案存活時間 | 其它 |
-|---|---|---|---|---|
+|---|---|---|---|
 | [Gofile](https://gofile.io/) | 無限制 | 10 天 | |
 | [pixeldrain](https://pixeldrain.com/) | 20 GB | 120 天 | 需註冊，可使用[Bypass](https://pixeldrain-bypass.cybar.xyz/) |
 | [Buzzheavier](https://buzzheavier.com/) | 無限制 | 15 天 | |
