@@ -11,12 +11,14 @@
 |---|---|---|---|
 | [Gofile](https://gofile.io/) | 無限制 | 10 天 | |
 | [pixeldrain](https://pixeldrain.com/) | 20 GB | 120 天 | 需註冊，可使用[Bypass](https://pixeldrain-bypass.cybar.xyz/) |
+| [VikingFile](https://vikingfile.com/) | 無限制 | 15 天 | |
 | [Buzzheavier](https://buzzheavier.com/) | 無限制 | 15 天 | |
 | [catbox](https://catbox.moe/) | 200 MB | 永久 | |
 | [Send.now](https://send.now/) | 100 GB | 30 天 | |
 | [Transfer.it](https://transfer.it/) | 無限制 | 90 天 | |
 | [Ranoz](https://ranoz.gg/) | 20 GB | 30 天 | |
 | [GigaFile](https://gigafile.nu/) | 300 GB | 可到 100 天 | |
-| [Gofile.to](https://gofile.to/) | 5 GB | 永久 | |
+| [FileFast](https://filefa.st/) | 5 GB | 永久 | |
 | [udrop](https://www.udrop.com/) | 5 GB | 永久 | 需註冊 |
 | [mega](https://mega.nz/) | 20 GB | 基本永久 | 需註冊 |
+| [Lufi](https://upload.disroot.org/) | 2 GB | 30 天 | |
