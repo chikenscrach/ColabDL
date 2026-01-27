@@ -10,7 +10,7 @@
 | 網站名稱 | 檔案大小限制 | 檔案存活時間 | 其它 |
 |---|---|---|---|
 | [Gofile](https://gofile.io/) | 無限制 | 10 天 | |
-| [pixeldrain](https://pixeldrain.com/) | 20 GB | 120 天 | 需註冊，可使用[Bypass](https://pixeldrain-bypass.cybar.xyz/) |
+| [pixeldrain](https://pixeldrain.com/) | 10 GB | 60 天 | 需註冊 |
 | [VikingFile](https://vikingfile.com/) | 無限制 | 15 天 | |
 | [Buzzheavier](https://buzzheavier.com/) | 無限制 | 15 天 | |
 | [catbox](https://catbox.moe/) | 200 MB | 永久 | |
