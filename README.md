@@ -13,6 +13,7 @@
 | [pixeldrain](https://pixeldrain.com/) | 10 GB | 60 天 | 需註冊 |
 | [VikingFile](https://vikingfile.com/) | 無限制 | 15 天 | |
 | [Buzzheavier](https://buzzheavier.com/) | 無限制 | 15 天 | |
+| [Rootz](https://rootz.so/) | 25 GB | 7 天 | |
 | [catbox](https://catbox.moe/) | 200 MB | 永久 | |
 | [Send.now](https://send.now/) | 100 GB | 30 天 | |
 | [Transfer.it](https://transfer.it/) | 無限制 | 90 天 | |
