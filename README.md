@@ -12,6 +12,7 @@
 | [Gofile](https://gofile.io/) | 無限制 | 10 天 | |
 | [pixeldrain](https://pixeldrain.com/) | 10 GB | 60 天 | 需註冊 |
 | [VikingFile](https://vikingfile.com/) | 無限制 | 15 天 | |
+| [0807](https://0807.st/) | 10 GiB | 自訂；90 天未下載會刪除 | 免註冊；可設密碼／下載次數自毀 |
 | [Buzzheavier](https://buzzheavier.com/), [2](https://fuckingfast.net/), [3](https://bzzhr.co/) | 無限制 | 15 天 | |
 | [ZeroFS](https://zerofs.link/) | 無限制 | 30 天 | |
 | [Rootz](https://rootz.so/) | 25 GB | 7 天 | |
