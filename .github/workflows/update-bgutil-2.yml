@@ -1,0 +1,157 @@
+name: Update bgutil provider to 2.0.0
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/update-bgutil-2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update YouTube download cell
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("ColabDL.ipynb")
+          notebook = json.loads(path.read_text(encoding="utf-8"))
+
+          cell = next(
+              (c for c in notebook.get("cells", [])
+               if c.get("metadata", {}).get("id") == "SSSSSSSSSSSS"),
+              None,
+          )
+          if cell is None:
+              raise RuntimeError("YouTube download cell SSSSSSSSSSSS not found")
+
+          old = "".join(cell.get("source", []))
+          if "#@title # YouTube影片下載" not in old:
+              raise RuntimeError("Target cell does not match the expected YouTube download cell")
+
+          source = '''#@title # YouTube影片下載
+          #@markdown [po_token](https://github.com/Brainicism/bgutil-ytdlp-pot-provider)
+
+          import os
+          import shutil
+          import subprocess
+          import sys
+          from importlib.metadata import PackageNotFoundError, version
+
+          yt_url = "https://youtu.be/dQw4w9WgXcQ" #@param {type:"string"}
+
+          BGUTIL_VERSION = "2.0.0"
+          BGUTIL_DIR = "/content/bgutil-ytdlp-pot-provider"
+          SERVER_DIR = os.path.join(BGUTIL_DIR, "server")
+          DENO_READY_MARKER = os.path.join(SERVER_DIR, ".colabdl-deno-ready")
+
+          %cd /content
+
+          # 確保 Deno 與 uv 可用
+          if not shutil.which("deno"):
+            subprocess.run("curl -fsSL https://deno.land/install.sh | sh", shell=True, check=True)
+          if os.path.isfile("/root/.deno/bin/deno"):
+            subprocess.run(["ln", "-sf", "/root/.deno/bin/deno", "/usr/local/bin/deno"], check=True)
+          if not shutil.which("uv"):
+            subprocess.run([sys.executable, "-m", "pip", "install", "-q", "uv"], check=True)
+
+          def package_version(name):
+            try:
+              return version(name)
+            except PackageNotFoundError:
+              return None
+
+          def provider_version():
+            if not os.path.isdir(os.path.join(BGUTIL_DIR, ".git")):
+              return None
+            try:
+              return subprocess.check_output(
+                  ["git", "-C", BGUTIL_DIR, "describe", "--tags", "--exact-match", "HEAD"],
+                  text=True,
+                  stderr=subprocess.DEVNULL,
+              ).strip()
+            except subprocess.CalledProcessError:
+              return None
+
+          current_provider = provider_version()
+          provider_changed = current_provider != BGUTIL_VERSION
+
+          if provider_changed:
+            if current_provider:
+              print(f"🔄 bgutil provider {current_provider} → {BGUTIL_VERSION}")
+            else:
+              print(f"📦 安裝 bgutil provider {BGUTIL_VERSION}")
+            shutil.rmtree(BGUTIL_DIR, ignore_errors=True)
+            subprocess.run([
+                "git", "clone", "--depth", "1", "--single-branch",
+                "--branch", BGUTIL_VERSION,
+                "https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git",
+                BGUTIL_DIR,
+            ], check=True)
+          else:
+            print(f"✅ bgutil provider 已是 {BGUTIL_VERSION}")
+
+          # Python plugin 與 provider 原始碼固定使用相同版本，避免版本錯配。
+          # 新 runtime、provider 升版、plugin 版本不符或 yt-dlp 缺失時才重新安裝。
+          plugin_version = package_version("bgutil-ytdlp-pot-provider")
+          if provider_changed or plugin_version != BGUTIL_VERSION or not shutil.which("yt-dlp"):
+            subprocess.run([
+                "uv", "pip", "install", "-U",
+                "yt-dlp", "yt-dlp-ejs",
+                f"bgutil-ytdlp-pot-provider=={BGUTIL_VERSION}",
+                "--system",
+            ], check=True)
+          else:
+            print(f"✅ bgutil Python plugin 已是 {BGUTIL_VERSION}")
+
+          # 只有新安裝、升版或先前安裝未完成時才建立 Deno 依賴。
+          if provider_changed or not os.path.isfile(DENO_READY_MARKER):
+            subprocess.run(
+                ["deno", "install", "--allow-scripts=npm:canvas", "--frozen"],
+                cwd=SERVER_DIR,
+                check=True,
+            )
+            with open(DENO_READY_MARKER, "w", encoding="utf-8") as f:
+              f.write(BGUTIL_VERSION + "\\n")
+
+          %cd /content
+
+          #@markdown ※若遇`HTTP Error 403: Forbidden`或其他驗證Error可嘗試`中斷連線並刪除執行階段`後重新執行
+          !yt-dlp --ignore-errors --output "%(title)s.%(ext)s" --verbose --merge-output-format mp4 --embed-thumbnail --embed-metadata --embed-info-json --extractor-args "youtubepot-bgutilscript:server_home=/content/bgutil-ytdlp-pot-provider/server" "{yt_url}"
+          '''
+
+          # 去掉 heredoc 為了 YAML 可讀性所加的 10 個前導空白。
+          lines = source.splitlines(keepends=True)
+          cell["source"] = [line[10:] if line.startswith("          ") else line for line in lines]
+
+          path.write_text(
+              json.dumps(notebook, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Validate notebook
+        run: |
+          python -m json.tool ColabDL.ipynb >/dev/null
+          git diff --check
+          grep -q 'BGUTIL_VERSION = \\"2.0.0\\"' ColabDL.ipynb
+          ! grep -q -- '--branch 1.3.1' ColabDL.ipynb
+
+      - name: Commit notebook update
+        run: |
+          if git diff --quiet -- ColabDL.ipynb; then
+            echo "Notebook already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ColabDL.ipynb
+          git commit -m "Update bgutil-ytdlp-pot-provider to 2.0.0"
+          git push
